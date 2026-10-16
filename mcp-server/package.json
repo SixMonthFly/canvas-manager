@@ -1,0 +1,27 @@
+{
+  "name": "canvas-study-assistant-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Canvas course management with AI study assistance",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "inspector": "node --loader ts-node/esm node_modules/@modelcontextprotocol/inspector/dist/index.js src/index.ts"
+  },
+  "keywords": ["mcp", "canvas", "education", "ai", "study-assistant"],
+  "author": "SixMonthFly",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@modelcontextprotocol/inspector": "^0.1.0",
+    "typescript": "^5.6.0",
+    "ts-node": "^10.9.2"
+  }
+}

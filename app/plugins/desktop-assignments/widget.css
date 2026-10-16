@@ -1,0 +1,29 @@
+:root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; color: #f2f4f8; background: #13243c; }
+* { box-sizing: border-box; }
+body { margin: 0; height: 100vh; display: flex; flex-direction: column; border: 1px solid #536078; border-radius: 12px; overflow: hidden; }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: transparent; }
+button:focus-visible, input:focus-visible { outline: 2px solid #e6c777; outline-offset: 2px; }
+header { padding: 22px 22px 16px; display: flex; align-items: center; justify-content: space-between; -webkit-app-region: drag; }
+.brand { color: #dcc182; font-size: 10px; letter-spacing: 2px; font-weight: 600; }
+h1 { margin: 8px 0 0; font-size: 23px; letter-spacing: 1px; font-weight: 600; }
+#count { color: #e6c777; font-size: 14px; letter-spacing: 0; }
+#hide { -webkit-app-region: no-drag; font-size: 25px; color: #a9b6c9; padding: 3px 9px; }
+.options { display: flex; gap: 18px; padding: 0 22px 14px; font-size: 11px; color: #bfcbda; border-bottom: 1px solid #ffffff14; }
+label { display: flex; gap: 5px; align-items: center; cursor: pointer; }
+input { accent-color: #d9bd78; margin: 0; }
+main { overflow-y: auto; padding: 6px 14px; flex: 1; min-height: 0; }
+.assignment { width: 100%; text-align: left; padding: 14px 8px; border-bottom: 1px solid #ffffff12; display: block; }
+.assignment:hover { background: #ffffff08; border-radius: 5px; }
+.course { color: #adc0d8; font-size: 10px; letter-spacing: .4px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.name { font-size: 14px; line-height: 1.5; margin: 5px 0 7px; display: block; overflow-wrap: anywhere; }
+.due { font-size: 11px; color: #bcc9da; display: flex; justify-content: space-between; gap: 8px; }
+.urgent { color: #f4ce80; }
+.done { opacity: .65; }
+.empty { padding: 60px 18px; text-align: center; color: #aebfd2; font-size: 13px; line-height: 1.9; }
+.empty strong { display: block; color: #e5cd95; font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+#error { color: #ffb2a7; font-size: 11px; padding: 8px 22px; margin: 0; }
+footer { padding: 14px 20px; display: flex; gap: 8px; justify-content: space-between; align-items: center; border-top: 1px solid #ffffff14; font-size: 10px; }
+footer div { min-width: 0; }
+#range { display: block; color: #d8c08d; }
+#synced { display: block; font-size: 10px; color: #9db0c8; margin-top: 4px; }
+footer button { padding: 8px 0 8px 6px; color: #e0c88e; white-space: nowrap; font-size: 11px; }

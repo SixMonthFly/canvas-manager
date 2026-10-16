@@ -1,0 +1,27 @@
+# 依赖
+node_modules/
+# 敏感信息(API Key、登录凭据、使用痕迹)
+data/
+data/notified.json
+data/debug.json
+.token
+# 下载的课程文件(体积大)
+# 运行时生成(托盘图标)
+data/icon.png
+# 打包产物
+app/dist/
+mcp-server/dist/
+output/
+tmp/
+app/app/screenshots/
+# 运行时日志
+*.log
+$TEMP/
+# 工具缓存
+.v2c/
+.video_agent/
+__pycache__/
+# 本地诊断日志(运行时生成)
+
+.DS_Store
+website/assets/campus.jpg

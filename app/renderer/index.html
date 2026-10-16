@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: canvas-res:; font-src 'self' https: data:;">
+  <title>Canvas 课程管理</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 皮肤可选择侧栏或标准布局,顶栏元素保持同一批节点 -->
+  <header>
+    <h1 id="app-title">📚 Canvas 课程管理</h1>
+    <span id="synced-at" class="synced"></span>
+    <button id="settings-btn" title="设置">⚙ 设置</button>
+    <button id="refresh-btn" class="primary"><svg class="sync-svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.2 6.4A5.3 5.3 0 0 0 3.3 5M2.8 9.6a5.3 5.3 0 0 0 9.9 1.4" /><path d="M3.1 2.4v2.9H6M12.9 13.6v-2.9H10" /></svg><span class="sync-label">同步</span></button>
+  </header>
+  <div id="sync-progress" class="hidden" role="status" aria-live="polite">
+    <div class="sync-progress-heading">
+      <span id="sync-progress-title">正在连接 Canvas…</span>
+      <span id="sync-progress-count"></span>
+    </div>
+    <div id="sync-progress-track" class="sync-progress-track" role="progressbar" aria-label="课程同步进度" aria-valuemin="0" aria-valuemax="100">
+      <div id="sync-progress-fill" class="sync-progress-fill indeterminate"></div>
+    </div>
+    <div id="sync-progress-detail"></div>
+  </div>
+  <div id="app">
+    <nav id="course-nav">
+      <div id="nav-head" class="only-sidebar">
+        <div id="nav-brand"></div>
+        <div id="nav-sync"></div>
+      </div>
+      <div class="nav-label only-sidebar">课程</div>
+      <div id="nav-items"></div>
+      <div id="update-footer">
+        <span id="update-status">📦 v-</span>
+        <button id="update-check-btn" title="检查新版本">🚀 检查更新</button>
+      </div>
+    </nav>
+    <div id="update-panel" class="hidden">
+      <div class="update-panel-head">
+        <span>发现新版本</span>
+        <button id="update-panel-close">✕</button>
+      </div>
+      <div id="update-progress-box" class="hidden">
+        <div class="prog-line" id="update-stage"></div>
+        <div class="prog-detail" id="update-detail"></div>
+        <div class="prog-bar"><div class="prog-fill" id="update-fill"></div></div>
+      </div>
+      <div id="update-new-box" class="hidden">
+        <div id="update-notes" class="update-notes"></div>
+        <div class="modal-actions" style="padding:8px 0 0">
+          <button id="update-later-btn">以后再说</button>
+          <button id="update-now-btn" class="primary">⬇ 下载更新</button>
+        </div>
+      </div>
+    </div>
+    <main>
+      <!-- 看板舞台:全部课程 = 一块固定看板(下一项截止 + 30 天月历);
+           具体课程 = 作业/公告/课件三块看板,启用插件后可增加看板 -->
+      <div id="stage" data-mode="home">
+        <div id="home-view" class="hidden"></div>
+        <div id="stage-strip-head">
+          <button id="stage-overview-btn" title="回到课程看板总览(Esc)"><svg class="grid-svg" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1.2" /><rect x="9" y="2" width="5" height="5" rx="1.2" /><rect x="2" y="9" width="5" height="5" rx="1.2" /><rect x="9" y="9" width="5" height="5" rx="1.2" /></svg><span>总览</span></button>
+        </div>
+        <section class="board" data-board="assignments" aria-labelledby="board-title-assignments">
+          <div class="board-head">
+            <button class="board-title" id="board-title-assignments" data-section="assignments">作业</button>
+            <span class="board-meta" id="board-meta-assignments"></span>
+          </div>
+          <div class="board-frame"><div class="board-surface">
+            <div id="sub-filters">
+              <button class="chip active" data-filter="pending">待办</button>
+              <button class="chip" data-filter="overdue">已过期</button>
+              <button class="chip" data-filter="done">已完成</button>
+              <button class="chip" data-filter="all">全部</button>
+            </div>
+            <div id="content">
+              <div id="assignment-list"></div>
+              <div id="detail-panel" class="hidden" role="region" aria-labelledby="detail-title">
+                <div class="detail-header">
+                  <span id="detail-title"></span>
+                  <button id="detail-close" aria-label="关闭作业详情">✕</button>
+                </div>
+                <div id="detail-meta"></div>
+                <div class="detail-actions">
+                  <button id="detail-open">🌐 打开原页</button>
+                </div>
+                <div id="detail-desc" class="detail-desc"></div>
+              </div>
+            </div>
+          </div></div>
+        </section>
+        <section class="board" data-board="announcements" aria-labelledby="board-title-announcements">
+          <div class="board-head">
+            <button class="board-title" id="board-title-announcements" data-section="announcements">公告</button>
+            <span class="board-meta" id="board-meta-announcements"></span>
+          </div>
+          <div class="board-frame"><div class="board-surface">
+            <div id="ann-view">
+              <div id="ann-list"></div>
+            </div>
+          </div></div>
+        </section>
+        <section class="board" data-board="files" aria-labelledby="board-title-files">
+          <div class="board-head">
+            <button class="board-title" id="board-title-files" data-section="files">课件</button>
+            <span class="board-meta" id="board-meta-files"></span>
+          </div>
+          <div class="board-frame"><div class="board-surface">
+            <div id="files-view">
+              <div class="files-toolbar">
+                <span id="files-hint" class="synced"></span>
+                <button id="download-all-btn" class="primary">⬇ 全部下载</button>
+              </div>
+              <div id="files-list"></div>
+            </div>
+          </div></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="settings-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+    <div class="modal-body">
+      <h2 id="settings-title">⚙ 设置</h2>
+      <div class="settings-tabs" role="tablist" aria-label="设置分类">
+        <button id="settings-general-tab" data-settings-tab="general" role="tab" aria-selected="true" aria-controls="settings-general-panel">常规</button>
+        <button id="settings-plugins-tab" data-settings-tab="plugins" role="tab" aria-selected="false" aria-controls="settings-plugins-panel" tabindex="-1">插件</button>
+      </div>
+      <section id="settings-general-panel" data-settings-panel="general" role="tabpanel" aria-labelledby="settings-general-tab">
+        <label data-no-translate>语言 / Language<select id="language-select"><option value="zh-CN">简体中文</option><option value="en">English</option></select></label>
+        <button id="onboarding-replay" type="button">使用指引</button>
+        <label>学校（切换后保存将自动重启）<select id="school-select"></select></label>
+        <p id="school-current" role="status"></p>
+        <label>外观
+          <select id="theme-select" title="切换已安装的皮肤"></select>
+        </label>
+      <div class="privacy-box">
+        <div class="privacy-head">
+          <span>🔒 隐私与诊断(纯本地)</span>
+          <label class="switch-like"><input type="checkbox" id="telemetry-toggle" checked> 记录诊断日志</label>
+        </div>
+        <p class="privacy-text">
+          应用会把匿名诊断信息记录在<b>本机的 data/telemetry.jsonl</b>,用于排查同步失败、课件下载失败等问题。
+          <b>绝不会自动上传任何数据。</b>记录内容:随机安装 ID(与个人身份无关)、应用版本、系统与硬件(操作系统/CPU/内存)、
+          功能事件(同步与下载的成败、错误码、文件大小、已启用插件的功能使用次数——课程只记数量,不记名称)。
+          <b>不记录:</b>姓名、学号、密钥、作业与课程内容。
+        </p>
+        <div class="privacy-actions">
+          <button id="telemetry-export-btn">📤 导出诊断数据(发给我即可帮忙排查)</button>
+        </div>
+      </div>
+        <p class="hint">外观可先预览，修改后点底部「保存」生效。</p>
+      </section>
+      <section id="settings-plugins-panel" data-settings-panel="plugins" role="tabpanel" aria-labelledby="settings-plugins-tab" class="hidden">
+        <p class="hint">安装、卸载与启用会立即生效；插件配置填好后点底部「保存」。本版本支持从安装包离线重新安装，卸载保留配置、报告和课程数据。</p>
+        <div id="plugins-list" aria-live="polite"></div>
+        <div id="plugin-settings-content"></div>
+      </section>
+      <div class="modal-actions"><span class="settings-spacer"></span><button id="settings-close-btn">取消</button><button id="settings-save-btn" class="primary">保存</button></div>
+    </div>
+  </div>
+
+  <dialog id="onboarding" aria-labelledby="onboarding-title">
+    <div class="welcome-card">
+      <div class="welcome-top"><span class="welcome-brand">C<span>✓</span></span><span id="welcome-progress"></span><button id="welcome-close" type="button" aria-label="关闭">✕</button></div>
+      <div id="welcome-content"></div>
+      <p id="welcome-error" role="alert"></p>
+      <div class="welcome-actions"><button id="welcome-skip" type="button"></button><button id="welcome-back" type="button"></button><button id="welcome-next" type="button" class="primary"></button></div>
+    </div>
+  </dialog>
+  <div id="toast" class="hidden"></div>
+  <script src="vendor/marked.umd.js"></script>
+  <script src="i18n.js"></script>
+  <script src="onboarding.js"></script>
+  <script src="bootstrap.js"></script>
+</body>
+</html>

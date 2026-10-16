@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Canvas · 七天作业</title>
+  <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+  <header><div><span class="brand">CANVAS / HKUST</span><h1>七天作业 <span id="count"></span></h1></div><button id="hide" aria-label="隐藏桌面卡片" title="隐藏（可在设置 → 插件中恢复）">×</button></header>
+  <div class="options"><label><input id="completed" type="checkbox">显示已提交</label><label><input id="pinned" type="checkbox">置顶</label></div>
+  <main id="list" aria-label="未来七天截止的作业"></main>
+  <p id="error" role="alert" hidden></p>
+  <footer><div><span id="range"></span><small id="synced"></small></div><button id="open-app">打开应用 ↗</button></footer>
+  <script src="widget.js"></script>
+</body>
+</html>

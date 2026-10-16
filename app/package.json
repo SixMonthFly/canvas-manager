@@ -1,0 +1,115 @@
+{
+  "name": "canvas-manager",
+  "version": "4.1.2",
+  "description": "Canvas Manager · Multi-school course companion",
+  "main": "main.js",
+  "author": "SixMonthFly",
+  "license": "MIT",
+  "homepage": "https://github.com/SixMonthFly/canvas-manager",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "plugins:prepare": "node scripts/plugin-catalog.cjs --write",
+    "plugins:check": "node scripts/plugin-catalog.cjs --check",
+    "prestart": "npm run plugins:check",
+    "start": "electron .",
+    "icons": "node scripts/make-icons.js",
+    "dist": "electron-builder --win --linux",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux",
+    "dist:mac": "electron-builder --mac --arm64"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "0.1.80",
+    "electron": "44.2.0",
+    "electron-builder": "^26.15.3",
+    "ws": "^8.21.3"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "marked": "^18.0.11",
+    "pdf-parse": "^2.4.5"
+  },
+  "build": {
+    "beforePack": "./scripts/check-plugin-packaging.cjs",
+    "afterPack": "./scripts/package-native-widget.cjs",
+    "protocols": [
+      {
+        "name": "Canvas 作业",
+        "schemes": [
+          "canvas-manager"
+        ]
+      }
+    ],
+    "appId": "com.hkustgz.canvas-tool",
+    "productName": "Canvas 课程管理",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "sync-bridge.js",
+      "preload.js",
+      "core/**/*",
+      "plugins/**/*",
+      "renderer/**/*",
+      "assets/**/*",
+      "!node_modules/@napi-rs/**",
+      "!plugins/desktop-assignments/**/*"
+    ],
+    "mac": {
+      "target": "zip",
+      "category": "public.app-category.education",
+      "icon": "build/icon.png",
+      "identity": "-",
+      "hardenedRuntime": false,
+      "artifactName": "CanvasManager-${version}-mac-${arch}.${ext}"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "runAfterFinish": true,
+      "installerLanguages": [
+        "en_US",
+        "zh_CN"
+      ],
+      "artifactName": "CanvasManager-Setup-${version}-x64.exe"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "Education",
+      "icon": "build/icon.png",
+      "artifactName": "canvas-manager-${version}-${arch}.${ext}",
+      "maintainer": "SixMonthFly"
+    },
+    "deb": {
+      "packageName": "canvas-manager"
+    },
+    "compression": "maximum"
+  }
+}

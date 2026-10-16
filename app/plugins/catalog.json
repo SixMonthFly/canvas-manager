@@ -1,0 +1,183 @@
+[
+  {
+    "id": "canvas-ai",
+    "name": "AI 助手",
+    "description": "解读作业、生成方案、整理公告和分析课程。启用后可配置模型服务。",
+    "version": "4.1.0",
+    "apiVersion": 1,
+    "defaultEnabled": false,
+    "requires": [
+      "canvas",
+      "storage",
+      "diagnostics",
+      "documents"
+    ],
+    "main": "main.cjs",
+    "renderer": "renderer.mjs",
+    "source": "plugins/ai",
+    "files": [
+      {
+        "path": "main.cjs",
+        "sha256": "f9da114d1598c64adfc5b7ca0b681f1a4b4028d7b969c8cad7f948360da62f1a"
+      },
+      {
+        "path": "renderer.mjs",
+        "sha256": "d2bbdbdaa64faf01d134f5cf4438e8218452a3bb475275ca1d976b189400bf75"
+      },
+      {
+        "path": "style.css",
+        "sha256": "a15489009879ceb67c0865726c647d4387496b502bdd3b9da5c71347447279ff"
+      }
+    ]
+  },
+  {
+    "id": "native-assignments",
+    "name": "Mac 系统小组件",
+    "description": "在 macOS 编辑小组件中添加七天作业，支持小、中、大尺寸；退出应用后仍显示最近同步内容。",
+    "version": "4.1.0",
+    "apiVersion": 1,
+    "defaultInstalled": true,
+    "defaultEnabled": false,
+    "requires": [
+      "canvas",
+      "nativeWidgets"
+    ],
+    "main": "main.cjs",
+    "renderer": "renderer.mjs",
+    "source": "plugins/native-assignments",
+    "files": [
+      {
+        "path": "main.cjs",
+        "sha256": "057d9e7932ffa8d1033fd1bccbf1bb07dc38a11c1aeab1a56e8fe7052fdbc84b"
+      },
+      {
+        "path": "renderer.mjs",
+        "sha256": "e807d1ed0ea34cf14cb5f3235c8af5268bbedb2a45428c8b62e74a889506e53f"
+      }
+    ]
+  },
+  {
+    "id": "theme-hkust",
+    "name": "HKUST 皮肤",
+    "description": "更换应用外观，保留课程数据和功能。",
+    "version": "4.0.0",
+    "apiVersion": 1,
+    "kind": "theme",
+    "themeId": "hkust",
+    "defaultInstalled": false,
+    "defaultEnabled": false,
+    "requires": [],
+    "main": "main.cjs",
+    "renderer": "renderer.mjs",
+    "source": "plugins/themes/hkust",
+    "files": [
+      {
+        "path": "main.cjs",
+        "sha256": "98fa1a7b1f2820471320cef9c60e3476cfcf294acd7e6509c8efd79a5ab06a57"
+      },
+      {
+        "path": "renderer.mjs",
+        "sha256": "f7165b50d0ec5fa1ca1b578004bb658dcb6e77392b1bbff8254377e89023a7d3"
+      },
+      {
+        "path": "style.css",
+        "sha256": "26f630c0eda8207e5549ca0f70148fbc73c88e8e54c1163bae3d187b33b3907f"
+      }
+    ]
+  },
+  {
+    "id": "theme-claude",
+    "name": "Claude 皮肤",
+    "description": "更换应用外观，保留课程数据和功能。",
+    "version": "4.0.0",
+    "apiVersion": 1,
+    "kind": "theme",
+    "themeId": "claude",
+    "defaultInstalled": false,
+    "defaultEnabled": false,
+    "requires": [],
+    "main": "main.cjs",
+    "renderer": "renderer.mjs",
+    "source": "plugins/themes/claude",
+    "files": [
+      {
+        "path": "fonts/SourceSerif4-OFL.txt",
+        "sha256": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3"
+      },
+      {
+        "path": "fonts/SourceSerif4-latin-opsz.woff2",
+        "sha256": "f2ea9c12d2fe9bd3a9589b02ad2c0909da88f30938c91adc838c4f4098f9f9e0"
+      },
+      {
+        "path": "main.cjs",
+        "sha256": "98fa1a7b1f2820471320cef9c60e3476cfcf294acd7e6509c8efd79a5ab06a57"
+      },
+      {
+        "path": "renderer.mjs",
+        "sha256": "de2a5996e93effff241af7084049999905aa671e62c22830fac7af16363cfa06"
+      },
+      {
+        "path": "style.css",
+        "sha256": "669a83d008bc675ed496d21d593ce26ec78d3897820b12993ef0509a43f09455"
+      }
+    ]
+  },
+  {
+    "id": "theme-chatgpt",
+    "name": "ChatGPT 皮肤",
+    "description": "更换应用外观，保留课程数据和功能。",
+    "version": "4.0.0",
+    "apiVersion": 1,
+    "kind": "theme",
+    "themeId": "chatgpt",
+    "defaultInstalled": false,
+    "defaultEnabled": false,
+    "requires": [],
+    "main": "main.cjs",
+    "renderer": "renderer.mjs",
+    "source": "plugins/themes/chatgpt",
+    "files": [
+      {
+        "path": "main.cjs",
+        "sha256": "98fa1a7b1f2820471320cef9c60e3476cfcf294acd7e6509c8efd79a5ab06a57"
+      },
+      {
+        "path": "renderer.mjs",
+        "sha256": "1f24b5466c3b377cf74ee9fd0912a921cfaab58b0b07aada774c19136d85761f"
+      },
+      {
+        "path": "style.css",
+        "sha256": "88677fc8ab4e4dc7623ad5a5d517c5bd706c5df6c8308e914a8e9cffcb90c27b"
+      }
+    ]
+  },
+  {
+    "id": "theme-dark",
+    "name": "深色 皮肤",
+    "description": "更换应用外观，保留课程数据和功能。",
+    "version": "4.0.0",
+    "apiVersion": 1,
+    "kind": "theme",
+    "themeId": "default",
+    "defaultInstalled": false,
+    "defaultEnabled": false,
+    "requires": [],
+    "main": "main.cjs",
+    "renderer": "renderer.mjs",
+    "source": "plugins/themes/dark",
+    "files": [
+      {
+        "path": "main.cjs",
+        "sha256": "98fa1a7b1f2820471320cef9c60e3476cfcf294acd7e6509c8efd79a5ab06a57"
+      },
+      {
+        "path": "renderer.mjs",
+        "sha256": "f92445d3f695916979992df7f87dd8bd35f9bc17cf96d8d74c3433f9d75047ac"
+      },
+      {
+        "path": "style.css",
+        "sha256": "998b0135686d1ae95622c3c3e61f16052068b69a25814ab11285d6a54300c6bd"
+      }
+    ]
+  }
+]

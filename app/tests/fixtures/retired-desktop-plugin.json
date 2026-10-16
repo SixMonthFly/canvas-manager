@@ -1,0 +1,47 @@
+{
+  "id": "desktop-assignments",
+  "name": "七天作业桌面卡片（Mac）",
+  "description": "在桌面查看未来七天截止的作业。支持拖动、置顶与显示已提交项；应用需在后台运行。",
+  "version": "4.0.0",
+  "apiVersion": 1,
+  "defaultInstalled": true,
+  "defaultEnabled": false,
+  "requires": [
+    "canvas",
+    "storage",
+    "desktop"
+  ],
+  "main": "main.cjs",
+  "renderer": "renderer.mjs",
+  "source": "plugins/desktop-assignments",
+  "files": [
+    {
+      "path": "assignments.cjs",
+      "sha256": "24e5cd5ae9afc6be8a79f1c42e19da77ac5089c7358df5d47eafed70c5628368"
+    },
+    {
+      "path": "main.cjs",
+      "sha256": "e1ab3d8dc447d4313e2bdb74b3d6de802e115bdc2f54d54a1cdda54f8af6fac0"
+    },
+    {
+      "path": "preload.cjs",
+      "sha256": "e834879d95fe75f13d28a4d57106d203da33f22cf9d4aebb70154a52a9d7fdeb"
+    },
+    {
+      "path": "renderer.mjs",
+      "sha256": "28fadf0d18604b9fa91201fc7e986a3ef0cc4557384b26652f26af2f575c63ae"
+    },
+    {
+      "path": "widget.css",
+      "sha256": "620e4a90daeabeea0d7e63e72bcc9e468d6fa81c9b68bcde071bfb3a53db66a4"
+    },
+    {
+      "path": "widget.html",
+      "sha256": "2cd3826ce52df84378c1bbe199f548d0dbe2ef2b9e6319d9b0ecc681683d16a4"
+    },
+    {
+      "path": "widget.js",
+      "sha256": "4e8bc158089d1fc6a60b6da66c0ff22a75f9f1772b96ab50e7f14b54a5168add"
+    }
+  ]
+}

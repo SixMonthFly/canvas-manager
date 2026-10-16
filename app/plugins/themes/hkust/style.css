@@ -1,0 +1,44 @@
+/* HKUST 皮肤：全部样式和资源由插件安装目录提供。 */
+body[data-theme="hkust"] {
+  --bg: #f2f4f8;
+  --header-bg: #003366; --header-text: #ffffff; --header-border: #996600;
+  --nav-bg: #00254a; --nav-text: #cfe0f5;
+  --panel: #ffffff; --panel2: #eef2f8; --panel3: #ffffff;
+  --border: #d8dee9; --border-soft: #e6eaf1; --row-line: #e6eaf1;
+  --hover: #e9eef7;
+  --text: #14213d; --text-soft: #2c3a5e; --text-dim: #4a5878; --text-mute: #606c87;
+  --accent: #996600; --accent-hover: #7a5000; --accent-text: #936200; --accent-dim: #f3ecd9;
+  --accent-disabled: #cfc0a0; --accent-contrast: #fff;
+  /* 藏青底上的金色需要 >=3:1 才看得见,#996600 只有 2.55,所以侧栏指示条另用亮金 */
+  --gold-on-navy: #d9b040;
+  --btn: #ffffff; --btn-hover: #f0f3f8; --btn-border: #b9c3d6;
+  --ok: #2d7b31; --ok-tint: #e4eee4; --ok-strong: #2c7930;
+  --warn: #af5109; --warn-tint: #f5e8df; --warn-strong: #ac4f09;
+  --bad: #c62828; --bad-tint: #f8e3e3; --bad-strong: #c62828;
+  --info: #0057b8; --info-tint: #dee9f6; --info-strong: #0057b8;
+  --paper-bg: #fff; --paper-text: #1f232b; --paper-link: #0057b8; --paper-border: #b9c3d6;
+  --overlay: rgba(0, 20, 40, .45);
+  --font: "Segoe UI", "Microsoft YaHei", sans-serif;
+  --font-display: Verdana, "Segoe UI", "Microsoft YaHei", sans-serif;
+  --font-mono: Consolas, ui-monospace, monospace;
+  --radius-lg: 8px; --radius: 4px; --radius-sm: 3px;
+  --btn-radius: 2px; --input-radius: 2px;
+  --input-bg: #ffffff; --input-border: #b9c3d6;
+  --card-border: #d8dee9;
+  --scrollbar: #b9c3d6; --scrollbar-hover: #9aa8c4;
+  --shadow: 0 1px 2px rgba(20,33,61,.08);
+  --course-0: #003366; --course-0-tint: #dfe7f1;  --course-1: #996600; --course-1-tint: #f3ebd6;
+   --course-2: #00796b; --course-2-tint: #dbeeeb;  --course-3: #b71c1c; --course-3-tint: #f6e0e0;
+   --course-4: #5e35b1; --course-4-tint: #ebe5f6;  --course-5: #2e7d32; --course-5-tint: #e2efe2;
+   --course-6: #c75b00; --course-6-tint: #f8e7d8;  --course-7: #455a64; --course-7-tint: #e4e9eb;
+}
+
+body[data-theme="hkust"] header h1 { letter-spacing: .5px; }
+
+body[data-theme="hkust"] .nav-item:hover { color: var(--text); }
+
+body[data-theme="hkust"] .nav-item.active { color: var(--text); box-shadow: inset 3px 0 0 var(--gold-on-navy); }
+
+body[data-theme="hkust"] .row .name { font-weight: 600; }
+
+body[data-theme="hkust"] .nav-item .cdot { box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .6); }

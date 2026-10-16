@@ -1,0 +1,36 @@
+/* ChatGPT 皮肤：全部样式和资源由插件安装目录提供。 */
+body[data-theme="chatgpt"] {
+  --bg: #ffffff;
+  --header-bg: #ffffff; --header-text: #0d0d0d; --header-border: #ececec;
+  --nav-bg: #f9f9f9; --nav-text: #5d5d5d;
+  --panel: #ffffff; --panel2: #f9f9f9; --panel3: #f9f9f9;
+  --border: #e5e5e5; --border-soft: #ececec; --row-line: #ececec;
+  --hover: #f0f0f0;
+  --text: #0d0d0d; --text-soft: #2f2f2f; --text-dim: #5d5d5d; --text-mute: #6d6d6d;
+  --accent: #0d8669; --accent-hover: #0a6e56; --accent-text: #0c7c61; --accent-dim: #e2f4ee;
+  --accent-disabled: #b9d9cd; --accent-contrast: #fff;
+  --btn: #ffffff; --btn-hover: #f2f2f2; --btn-border: #d9d9d9;
+  --ok: #0c7c61; --ok-tint: #dfeeea; --ok-strong: #0c785e;
+  --warn: #b15209; --warn-tint: #f5e9df; --warn-strong: #ac5009;
+  --bad: #d52222; --bad-tint: #fae2e2; --bad-strong: #cb2020;
+  --info: #2563eb; --info-tint: #e3ebfc; --info-strong: #205feb;
+  --paper-bg: #fff; --paper-text: #1f232b; --paper-link: #1a5fb4; --paper-border: #d9d9d9;
+  --overlay: rgba(13, 13, 13, .38);
+  --font: -apple-system, "Segoe UI Variable", "Segoe UI", "Microsoft YaHei", sans-serif;
+  --font-display: var(--font);
+  --font-mono: ui-monospace, Consolas, "Cascadia Mono", monospace;
+  --radius-lg: 16px; --radius: 12px; --radius-sm: 10px;
+  --btn-radius: 999px; --input-radius: 12px;
+  --input-bg: #f4f4f4; --input-border: transparent;
+  --card-border: transparent;
+  --scrollbar: #d9d9d9; --scrollbar-hover: #c0c0c0;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 14px rgba(0,0,0,.05);
+  --course-0: #2563eb; --course-0-tint: #e7eefd;  --course-1: #0d9488; --course-1-tint: #e0f2ef;
+   --course-2: #d97706; --course-2-tint: #fbefdc;  --course-3: #db2777; --course-3-tint: #fbe7f1;
+   --course-4: #7c3aed; --course-4-tint: #efe8fd;  --course-5: #16a34a; --course-5-tint: #e3f4e8;
+   --course-6: #dc2626; --course-6-tint: #fbe7e7;  --course-7: #0891b2; --course-7-tint: #dff2f7;
+}
+
+body[data-theme="chatgpt"] .nav-item { border-radius: var(--radius-sm); }
+
+body[data-theme="chatgpt"] main { padding-right: 10px; }
